@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wildfire Data Visualizations</title>
+    <title>Wildfire Data Visualizations with Cumulative Line Chart</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Aptos, Calibri;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 32px;
+            font-weight: bold;
         }
         .chart-container {
             margin: 20px auto;
@@ -18,219 +29,276 @@
             position: absolute;
             background: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 5px;
-            border-radius: 3px;
+            padding: 8px;
+            border-radius: 5px;
             pointer-events: none;
             font-size: 12px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        #filter-container {
-            margin: 20px auto;
+        .chart-title {
+            font-size: 18px;
+            margin-bottom: 10px;
             text-align: center;
+            color: #333;
         }
-        select {
-            padding: 5px;
-            font-size: 14px;
+        .slider-container {
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div id="filter-container">
-        <label for="year-filter">Select Year: </label>
-        <select id="year-filter"></select>
+    <header>
+        Wildfire Data Visualizations (2012-2024) with A Cumulative Line Chart
+    </header>
+    <div class="chart-container">
+        <div class="chart-title">Cumulative Area Burnt by Wildfires (in Hectares)</div>
+        <div id="chart"></div>
+        <div class="tooltip" id="tooltip"></div>
     </div>
+    <div class="slider-container">
+        <label for="yearSlider">Select Year: </label>
+        <input type="range" id="yearSlider" min="2012" max="2024" step="1" value="2024">
+        <span id="sliderValue">2024</span>
+    </div>
+    <div class="container">
+        <h2>Detailed Visualization Critique of the wildfire charts created</h2>
 
-    <div class="chart-container" id="barChart"></div>
-    <div class="chart-container" id="scatterPlot"></div>
-    <div class="chart-container" id="lineChart"></div>
-    <div class="chart-container" id="pieChart"></div>
+        <h2>Attributes</h2> <ul> <li><span class="point">Entity:</span> Name of the country or region.</li> <li><span class="point"> Code:</span> Country or region code.</li>
+             
+        <li><span class="point">Year:</span> Indicates a yearly index (though not clear how this relates to actual years).</li>
+            <li><span class="point">Wildfire data for individual years:</span> (e.g., area burnt by wildfires in 2024, ...in 2023)</li> </ul>
+             <h2>Questions Addressed</h2> <ul> 
+            <li>Which regions have seen the most significant increase or decrease in wildfire-affected areas over time?</li>
+        <li>Which country or region had the highest or lowest area affected by wildfires in a given year?</li> 
+            <li>How do different regions compare in terms of wildfire impact over a particular time span?</li>
+        <li>What was the total area affected by wildfires worldwide in a specific year?</li> <li>Which year had the highest total area burnt by wildfires for certain countries?</li> 
+        <li>Which continents or larger regions are most affected by wildfires?</li> <li>Are there any years that stand out due to an unusual increase or decrease in wildfire activity?</li>
+         </li> </ul> <h2>Design Included</h2> <h3>Data Preparation</h3> <ul> 
+            <li>Aggregate the total area burned by wildfires for each region (or group of countries) per year.</li>
+             <li>Calculate the year-over-year percentage change or absolute change in area burned for each region.</li> </ul> 
+             <h3>Choose a Visualization Type</h3> <p>Options:</p> 
+             <ul> <li><span class="point">Bar Chart:</span> Represent percentage changes for a given time period.</li>
+                 <li><span class="point">Line Chart:</span> Show trends over time for each region.</li> <li><span class="point">Scatter plot:</span> Color regions based on wildfire trends.</li> </ul>
+		
+	
+        <p>The bar chart displays the total area burnt by wildfires across different continents from 2012 to 2024. The y-axis represents the area burnt in hectares, ranging from 0 to 12,000,000 hectares. The x-axis represents the years from 2012 to 2024.</p>
 
+        <h3>Color Coding</h3>
+        <div class="color-coding"><p>Each continent is represented by a different color:</p>
+            <ul>
+            <li><span class="blue"></span>Blue: Europe</li>
+            <li><span class="orange"></span>Orange: Africa</li>
+                <li><span class="green"></span>Green: Australia</li>
+            <li><span class="purple"></span>Purple: United States</li>
+                <li><span class="brown"></span>Brown: Asia</li>
+             <li><span class="red"></span>Red: South America</li>
+            </ul>
+        </div>     
+        <h3>Design ideas</h3>
+        <ul>
+         <li><span class="point">Title and Header:</span> The title and header are clear, concise, and descriptive of the visualization’s purpose. The title, "Wildfire Data Visualizations (2012-2024) with Cumulative Line Chart," immediately communicates the scope and purpose.</li>
+            <li><span class="point">Chart Layout:</span> The stacked bar chart and line chart are effectively laid out within the same space, making it easy to compare data visually. However, the position of the line chart could be slightly more emphasized, perhaps by using a different background or making the line graph larger so that it doesn’t get overshadowed by the stacked bars.</li>
+        </ul>
+
+        <h3>Data Presentation</h3>
+        <ul><li><span class="point">Stacked Bar Chart:</span> The stacked bar chart is an excellent choice for visualizing the area burnt by wildfires across continents. It clearly shows the contributions of each region over time, with each region represented by distinct colors (using D3’s color scheme).</li>
+        <li><span class="point">Tooltip:</span> The tooltip offers additional context, which is a great feature that enhances the interaction by allowing users to see exact values and percentages.</li>
+        <li><span class="point">Line Chart for Cumulative Area:</span> The line chart is a brilliant addition as it provides an intuitive way to track the overall cumulative burn area over the years. By using the slider, users can see how the total area burnt accumulates, giving them a better sense of the scale of wildfire activity over the years.</li>
+        <li><span class="point">Yearly Range on X-Axis:</span> Changing the x-axis to represent the year from 2012 to 2024 is essential for ensuring that users can track yearly trends.</li>
+        </ul>
+
+        <h3>Interaction</h3>
+        <ul><li><span class="point">Slider for Year Selection:</span> The slider provides great interactivity, allowing users to explore the cumulative area burnt for each year. The design of the slider is straightforward and intuitive. The text below the slider dynamically updates to show the selected year, which ensures that users can immediately see their selection.</li>
+    <li><span class="point">Tooltip:</span> The tooltip responsiveness to mouseover events provides valuable contextual information such as the exact area burnt, total area burnt, and the percentage of the total for each region.</li>
+        </ul>
+
+        <h3>Color Scheme used</h3>
+        <ul>
+        <li><span class="point">Color Use:</span> The color scheme is visually appealing and ensures each region is clearly distinguishable. The consistent use of these colors across both the stacked bar chart and the legend aids in keeping the chart intuitive.</li>
+        <li><span class="point">Legend:</span> The legend is well-placed and provides clear information about which color corresponds to each region.</li></ul>
+
+        <h3>User responsiveness</h3>
+        <ul>
+            <li><span class="point">Engagement:</span> The overall user experience is engaging. The combination of a stacked bar chart and a dynamic line chart makes it easy for users to both explore and understand the data. The interactivity—especially with the slider—creates a sense of control, and the tooltip enhances the experience by providing real-time feedback.</li></ul>
+		
+		<h3>Key Observations</h3>
+        <ul><li><strong>Africa (orange) Dominates:</strong> Africa consistently has the largest area burnt by wildfires each year. This indicates significant wildfire activity on this continent over the years.</li>
+        <li><strong>Peak in 2015:</strong> The total area burnt peaked in 2015, reaching close to 11,000,000 hectares. This year stands out as the highest wildfire activity during the period.</li>
+        <li><strong>Decline in 2024:</strong> There is a noticeable decline in the area burnt in 2024 compared to previous years. This could suggest a reduction in wildfire incidents or effective fire management strategies.</li>
+    <li><strong>Other Continents:</strong> While Africa is the most affected, other continents like Europe, Australia, the United States, Asia, and South America also contribute to the total burnt area but to a smaller extent. Europe (blue), Australia (green), and the United States (purple) show relatively stable but lower wildfire activities compared to Africa. Asia (brown) and South America (red) have the least contribution to the total area burnt by wildfires.</li>
+            <li><strong>Initial Low in 2012:</strong> The area burnt in 2012 is significantly lower than in other years. This might suggest fewer wildfire occurrences at the beginning of the period.</li>
+        </ul>
+
+        <h3>Trends and Changes</h3>
+        <ul>
+            <li><strong>Overall Trend:</strong> There is a fluctuation in wildfire activity over the years, with some years showing peaks and others showing declines.</li>
+            <li><strong>Yearly Variation:</strong> The data points to various factors that could influence wildfire activity, such as climatic conditions, human interventions, and natural vegetation changes.</li>
+
+        <h3>Conclusion</h3>
+        <p>The visualization focuses on clarity and user experience. It allows users to easily explore the wildfire data across continents and years while providing detailed contextual information through tooltips and a slider. The main strengths of the design are its interactivity, clarity, and effective data presentation. With a few improvements, it could further enhance the user experience.</p>
+        
+        <footer>
+            Refernce:
+             Oliveira, Willian. *Wildfires Dataset*. Kaggle, 2024, https://www.kaggle.com/datasets/willianoliveiragibin/wildfires.
+        </footer>
+    
+    </div>
     <script>
-        const csvUrl = "./areaburntbywildfiresbyweek.csv"; // Update with your dataset path
+        const width = 600, height = 300, margin = {top: 15, right: 150, bottom: 40, left: 30};
 
-        d3.csv(csvUrl).then(data => {
-            
-            const years = Object.keys(data[0]).filter(d => d.startsWith("area burnt"));
-            const processedData = data.map(d => {
-                const yearlyData = years.map(year => ({
-                    year: +year.match(/\d+/)[0],
-                    value: +d[year],
-                    entity: d.Entity
-                }));
-                return { entity: d.Entity, code: d.Code, yearlyData };
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const tooltip = d3.select("#tooltip");
+
+        // Loading the  CSV data and filtering regions to show only teh continents
+        d3.csv("areaburntbywildfiresbyweek.csv").then(data => {
+            const regions = ["Europe", "Africa", "Australia", "United States", "Asia", "South America"];
+            const filteredData = data.filter(d => regions.includes(d.Entity));
+            const years = Object.keys(data[0]).filter(key => key.includes("area burnt"));
+
+            // Process the data form teh csa
+            const processedData = years.map(year => {
+                const yearNumber = +year.match(/\d+/)[0];
+                const totals = { Year: yearNumber };
+                regions.forEach(region => {
+                    const row = filteredData.find(d => d.Entity === region);
+                    totals[region] = +row[year];
+                });
+                return totals;
             });
 
-            // Populate year filter dropdown
-            const yearFilter = d3.select("#year-filter");
-            years.forEach(year => {
-                yearFilter.append("option").text(year.match(/\d+/)[0]).attr("value", year);
-            });
-
-            // visualization default
-            const defaultYear = years[0];
-
-            createBarChart(processedData, years);
-            createScatterPlot(processedData, [defaultYear]);
-            createLineChart(processedData);
-            createPieChart(processedData, [defaultYear]);
-
-            // Update visualizations when year changes
-            yearFilter.on("change", function () {
-                const selectedYear = this.value;
-                d3.select("#scatterPlot").selectAll("*").remove();
-                d3.select("#pieChart").selectAll("*").remove();
-                createScatterPlot(processedData, [selectedYear]);
-                createPieChart(processedData, [selectedYear]);
-            });
-        });
-
-        // Chart functions (integrated from earlier examples)
-        function createBarChart(data, years) {
-            const svg = d3.select("#barChart")
-                .append("svg")
-                .attr("width", 800)
-                .attr("height", 500);
-
-            const yearlySums = years.map(year => ({
-                year: +year.match(/\d+/)[0],
-                total: d3.sum(data, d => d.yearlyData.find(y => y.year == year).value)
-            }));
-
-            const xScale = d3.scaleBand()
-                .domain(yearlySums.map(d => d.year))
-                .range([50, 750])
+            // changing the year range from 2012 to 2024
+            const x = d3.scaleBand()
+                .domain(d3.range(2012, 2025)) 
+                .range([0, width])
                 .padding(0.2);
 
-            const yScale = d3.scaleLinear()
-                .domain([0, d3.max(yearlySums, d => d.total)])
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(processedData, d => d3.sum(regions, region => d[region]))])
                 .nice()
-                .range([450, 50]);
+                .range([height, 0]);
 
+            const color = d3.scaleOrdinal()
+                .domain(regions)
+                .range(d3.schemeCategory10);
+
+            // make changes on x-axes
             svg.append("g")
-                .attr("transform", "translate(0,450)")
-                .call(d3.axisBottom(xScale).tickFormat(d3.format("d")));
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x).tickFormat(d => d));  // Year on x-axis
 
+            // make changes on x-axes
             svg.append("g")
-                .attr("transform", "translate(50,0)")
-                .call(d3.axisLeft(yScale));
+                .call(d3.axisLeft(y));
 
-            svg.selectAll(".bar")
-                .data(yearlySums)
-                .join("rect")
-                .attr("class", "bar")
-                .attr("x", d => xScale(d.year))
-                .attr("y", d => yScale(d.total))
-                .attr("width", xScale.bandwidth())
-                .attr("height", d => 450 - yScale(d.total))
-                .attr("fill", "steelblue");
+            // Create stacked bar chart
+            const stackedData = d3.stack()
+                .keys(regions)(processedData);
 
-            svg.append("text")
-                .attr("x", 400)
-                .attr("y", 30)
-                .attr("text-anchor", "middle")
-                .style("font-size", "18px")
-                .style("font-weight", "bold")
-                .text("Total Area Burnt by Wildfires Over Time");
-        }
-
-        function createScatterPlot(data, years) {
-            const year = years[0]; // Use the first year from the array
-            const selectedData = data.map(d => {
-                const yearlyEntry = d.yearlyData.find(y => y.year === +year.match(/\d+/)[0]);
-                return { entity: d.entity, value: yearlyEntry.value };
-            });
-
-            const svg = d3.select("#scatterPlot")
-                .append("svg")
-                .attr("width", 800)
-                .attr("height", 500);
-
-            const xScale = d3.scaleLinear()
-                .domain([0, d3.max(selectedData, d => d.value)])
-                .range([50, 750]);
-
-            const yScale = d3.scaleBand()
-                .domain(selectedData.map(d => d.entity))
-                .range([50, 450])
-                .padding(0.1);
-
-            svg.append("g")
-                .attr("transform", "translate(0,450)")
-                .call(d3.axisBottom(xScale));
-
-            svg.append("g")
-                .attr("transform", "translate(50,0)")
-                .call(d3.axisLeft(yScale));
-
-            svg.selectAll(".circle")
-                .data(selectedData)
-                .join("circle")
-                .attr("cx", d => xScale(d.value))
-                .attr("cy", d => yScale(d.entity) + yScale.bandwidth() / 2)
-                .attr("r", 8)
-                .attr("fill", "orange");
-        }
-
-        function createLineChart(data) {
-            const svg = d3.select("#lineChart")
-                .append("svg")
-                .attr("width", 800)
-                .attr("height", 500);
-
-            const xScale = d3.scaleLinear()
-                .domain([2012, 2024])
-                .range([50, 750]);
-
-            const yScale = d3.scaleLinear()
-                .domain([0, d3.max(data, d => d3.max(d.yearlyData, y => y.value))])
-                .nice()
-                .range([450, 50]);
-
-            svg.append("g")
-                .attr("transform", "translate(0,450)")
-                .call(d3.axisBottom(xScale).tickFormat(d3.format("d")));
-
-            svg.append("g")
-                .attr("transform", "translate(50,0)")
-                .call(d3.axisLeft(yScale));
-
-            const line = d3.line()
-                .x(d => xScale(d.year))
-                .y(d => yScale(d.value));
-
-            svg.selectAll(".line")
-                .data(data)
-                .join("path")
-                .attr("d", d => line(d.yearlyData))
-                .attr("fill", "none")
-                .attr("stroke", "steelblue")
-                .attr("stroke-width", 2);
-        }
-
-        function createPieChart(data, years) {
-            const year = years[0];
-            const selectedData = data.map(d => {
-                const yearlyEntry = d.yearlyData.find(y => y.year === +year.match(/\d+/)[0]);
-                return { entity: d.entity, value: yearlyEntry.value };
-            });
-
-            const svg = d3.select("#pieChart")
-                .append("svg")
-                .attr("width", 800)
-                .attr("height", 500)
+            svg.selectAll(".layer")
+                .data(stackedData)
+                .enter()
                 .append("g")
-                .attr("transform", "translate(400,250)");
+                .attr("fill", d => color(d.key))
+                .selectAll("rect")
+                .data(d => d)
+                .enter()
+                .append("rect")
+                .attr("x", d => x(d.data.Year))
+                .attr("y", d => y(d[1]))
+                .attr("height", d => y(d[0]) - y(d[1]))
+                .attr("width", x.bandwidth())
+                .attr("class", "bar")
+                .on("mouseover", function(event, d) {
+                    tooltip.style("opacity", 1);
+                    d3.selectAll(".bar").style("opacity", 0.5);
+                    d3.select(this).style("opacity", 1);
+                })
+                .on("mousemove", function(event, d) {
+                    const region = d3.select(this.parentNode).datum().key;
+                    const value = d[1] - d[0];
+                    const total = d3.sum(regions, region => d.data[region]);
+                    const percentage = ((value / total) * 100).toFixed(2);
 
-            const radius = 200;
+                    tooltip.html(`
+                        <strong>${d.data.Year}</strong><br>
+                        <strong>${region}:</strong> ${value.toLocaleString()} hectares<br>
+                        <strong>Total:</strong> ${total.toLocaleString()} hectares<br>
+                        <strong>Percentage:</strong> ${percentage}%`)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 30) + "px");
+                })
+                .on("mouseout", function() {
+                    tooltip.style("opacity", 0);
+                    d3.selectAll(".bar").style("opacity", 1);
+                });
 
-            const pie = d3.pie().value(d => d.value);
-            const arc = d3.arc().innerRadius(0).outerRadius(radius);
+            // Add a line chart to show the cumulative total area burnt by year
+            const cumulativeData = processedData.map((d, index) => {
+                let cumulativeTotal = 0;
+                regions.forEach(region => {
+                    cumulativeTotal += d[region];
+                });
+                return { Year: d.Year, CumulativeTotal: cumulativeTotal };
+            });
 
-            svg.selectAll(".arc")
-                .data(pie(selectedData))
-                .join("path")
-                .attr("d", arc)
-                .attr("fill", (d, i) => d3.schemeCategory10[i % 10]);
-        }
+            // Function to update line chart based on the slider year
+            const updateLineChart = (year) => {
+                const filteredCumulativeData = cumulativeData.filter(d => d.Year <= year);
+
+                const line = d3.line()
+                    .x(d => x(d.Year) + x.bandwidth() / 2)  // Center the line over the bars
+                    .y(d => y(d.CumulativeTotal));
+
+                svg.selectAll(".line").remove();
+
+            svg.append("path")
+                .datum(filteredCumulativeData)
+                .attr("fill", "none")
+                .attr("stroke", "red")
+                .attr("stroke-width", 4)
+                .attr("class", "line")
+                .attr("d", line);
+            };
+            //This will allow user to adjust the slider by the year
+            updateLineChart(2024);
+            const yearSlider = document.getElementById("yearSlider");
+            const sliderValue = document.getElementById("sliderValue");
+            //Once the visualization is loaded, you can move teh slide back and forth to show teh Licne chart
+            yearSlider.addEventListener("input", function() {
+                const selectedYear = +yearSlider.value;
+                sliderValue.textContent = selectedYear;
+                updateLineChart(selectedYear);
+            });
+          //Adding a legend to show differnt countires
+          const legend = svg.append("g")
+                .attr("transform", `translate(${width + 20}, 20)`);
+        legend.selectAll("rect")
+            .data(regions)
+            .enter()
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", (d, i) => i * 20)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", d => color(d));
+        legend.selectAll("text")
+            .data(regions)
+            .enter()
+            .append("text")
+            .attr("x", 20)
+            .attr("y", (d, i) => i * 20 + 12)
+            .text(d => d);
+
+        });
     </script>
 </body>
 </html>
