@@ -2,6 +2,10 @@
 
 ## How I Went About This Design
 
+Data set source: https://www.kaggle.com/datasets/willianoliveiragibin/wildfires
+
+Video narration: https://youtu.be/JmTsjO_iiAE
+
 ### Step 1: Choose a Dataset
 - **Dataset Selection:** wht I looked fo in this dataset was meaningful attributes that lend themselves well to various types of visualizations (e.g., time series, categories, numerical measures).
 - This dataset we downloaded form Kaggele : Oliveira, Willian. *Wildfires Dataset*. Kaggle, 2024, https://www.kaggle.com/datasets/willianoliveiragibin/wildfires.
