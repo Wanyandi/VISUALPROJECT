@@ -70,13 +70,25 @@
     <p>Video narration Link:<a href="https://youtu.be/JmTsjO_iiAE">Youtube Video Narration</a></p>
 
         <footer>
-            Refernce:
-             Oliveira, Willian. *Wildfires Dataset*. Kaggle, 2024, https://www.kaggle.com/datasets/willianoliveiragibin/wildfires.
-        </footer>
+         
+    Reference:
+            
+    Dataset source: Oliveira, Willian. *Wildfires Dataset*. Kaggle, 2024, https://www.kaggle.com/datasets/willianoliveiragibin/wildfires.<br>
+    
+    Additional code references: 
+    [Visualization-Platform Embed](https://github.com/nonyo555/Visualization-Platform/tree/1c405cf03d2de80a6b010982eb6398be4a86cf42/charts%2Ftest%2Fembeded.js),
+    [AppEx Dispatch Events](https://github.com/omdasoft/appex/tree/de3a1a1ef79b2b2816310f93eeecfba68c7cdbc3/public%2Fadmin%2Fjs%2Fscripts%2Fcharts%2Fd3%2Fpie%2Fdispatch-events.min.js),
+    [D3 Tips and Tricks Bar Chart](https://github.com/vvscode/js--d3-tips-and-tricks/tree/614eb39b0b5e537305b6143334ea88cac091ad31/bar-chart%2Fscript.js),
+    [FCC Scatterplot](https://github.com/martalist/fcc/tree/ae03b68530bd4bb8f1c32baeafbf0a4e3b805093/d3-scatterplot%2Fsource%2Fjs%2Fmain.js),
+    [Slippi Stats Evolution](https://github.com/Damien2417/test-slippi-stats/tree/1b9ff97da7abc22ecceda9e7d20a8aeb26d8a9a7/web%2Fapp%2Fssw%2Fstatic%2Fjs%2Fevolution.js),
+    [Gun Violence Area Chart](https://github.com/liwenwong1/gunviolence/tree/ea1c04ffb08afa273a9573f5c33a92a138c8ecfc/js%2Farea2.js),
+    [CS5891 UFO Visualizations](https://github.com/YunchaoLiu/YunchaoLiu.github.io/tree/48676b9e615cf2bee23518de762833d871f879a2/projects%2FCS5891%2Fufo-report%2FVis-Project-fall-2018%2Fwebpage%2Fufo_visualizations.js).
+</footer>
+
     
     </div>
     <script>
-        const width = 600, height = 300, margin = {top: 15, right: 150, bottom: 40, left: 30};
+        const width = 700, height = 400, margin = {top: 30, right: 150, bottom: 70, left: 60};
         const svg = d3.select("#chart")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -114,7 +126,7 @@
             const color = d3.scaleOrdinal()
                 .domain(regions)
                 .range(d3.schemeCategory10);
-            // make changes on x-axes
+    // xaxes details
             svg.append("g")
                 .attr("transform", `translate(0,${height})`)
                 .call(d3.axisBottom(x).tickFormat(d => d))
@@ -126,7 +138,7 @@
                 .style("text-anchor", "middle")
                 .text("Year");
                  
-    // make changes on y-axes
+    // yaxis stuff
         svg.append("g")
             .call(d3.axisLeft(y))
             .append("text")
