@@ -33,15 +33,17 @@ Video narration: https://youtu.be/JmTsjO_iiAE
 - The bar chart displays the total area burnt by wildfires across different continents from 2012 to 2024. The y-axis represents the area burnt in hectares, ranging from 0 to 12,000,000 hectares. The x-axis represents the years from 2012 to 2024.
 - **Interactive Elements:** Add hover effects, tooltips, zoom, and filtering options to enhance interactivity.
 
-  ####Color Coding
-  Each continent is represented by a different color:
-  -Blue: Europe
-  -Orange: Africa
-  -Green: Australia
-  -Purple: United States
-  -Brown: Asia
-  -Red: South America
+###Color Coding
+- Each continent is represented by a different color:
+- Blue: Europe
+- Orange: Africa
+- Green: Australia
+- Purple: United States
+- Brown: Asia
+- Red: South America
 
+  ###Skeches :
+  ![Skeches](./Skech_3.jpg)
   
   - The color scheme is visually appealing to ensures each region is clearly distinguishable. The consistent use of these colors across both the stacked bar chart and the legend aids in keeping the chart intuitive.
   - The legend is well-placed and provides clear information about which color corresponds to each region.
