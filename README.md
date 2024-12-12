@@ -33,7 +33,7 @@ Video narration: https://youtu.be/JmTsjO_iiAE
 - The bar chart displays the total area burnt by wildfires across different continents from 2012 to 2024. The y-axis represents the area burnt in hectares, ranging from 0 to 12,000,000 hectares. The x-axis represents the years from 2012 to 2024.
 - **Interactive Elements:** Add hover effects, tooltips, zoom, and filtering options to enhance interactivity.
 
-###Color Coding
+#### Color Coding
 - Each continent is represented by a different color:
 - Blue: Europe
 - Orange: Africa
@@ -42,8 +42,8 @@ Video narration: https://youtu.be/JmTsjO_iiAE
 - Brown: Asia
 - Red: South America
 
-  ###Skeches :
-  ![Skech_3](./Skech_3.jpg)
+  ### Skeches :
+  I have scanned the skeches and stored in the Cithub repository as sketch_1, Skech_2 and Skec_3 respectively.
   
   - The color scheme is visually appealing to ensures each region is clearly distinguishable. The consistent use of these colors across both the stacked bar chart and the legend aids in keeping the chart intuitive.
   - The legend is well-placed and provides clear information about which color corresponds to each region.
@@ -80,7 +80,7 @@ Video narration: https://youtu.be/JmTsjO_iiAE
 ### Step 8: Documentation
 - **Created a README or user guide explaining how to use the visualization and the insights it offers.**
 
-## Key Observations
+### Key Observations
 ![Wildfire Chart](./wildfire-chart.png)
 Fig 1: Showing the stacked bar chart
 
@@ -110,7 +110,7 @@ There is a fluctuation in wildfire activity over the years, with some years show
 ### Yearly Variation
 The data points to various factors that could influence wildfire activity, such as climatic conditions, human interventions, and natural vegetation changes.
 
-## Conclusion
+### Conclusion
 The visualization focuses on clarity and user experience. It allows users to easily explore the wildfire data across continents and years while providing detailed contextual information through tooltips and a slider. The main strengths of the design are its interactivity, clarity, and effective data presentation. With a few improvements, it could further enhance the user experience.
 
 ## Reference
