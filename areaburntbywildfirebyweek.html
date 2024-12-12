@@ -90,7 +90,7 @@
     
     </div>
     <script>
-        const width = 700, height = 400, margin = {top: 30, right: 150, bottom: 70, left: 60};
+        const width = 800, height = 500, margin = {top: 50, right: 200, bottom: 90, left: 80};
         const svg = d3.select("#chart")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -100,13 +100,13 @@
 
         const tooltip = d3.select("#tooltip");
 
-        // Loading the  CSV data and filtering regions to show only teh continents
+    // Loading the  CSV data and filtering regions to show only teh continents
         d3.csv("areaburntbywildfiresbyweek.csv").then(data => {
             const regions = ["Europe", "Africa", "Australia", "United States", "Asia", "South America"];
             const filteredData = data.filter(d => regions.includes(d.Entity));
             const years = Object.keys(data[0]).filter(key => key.includes("area burnt"));
 
-            // Process the data form teh csa
+    // Processing the data from the Csv
             const processedData = years.map(year => {
                 const yearNumber = +year.match(/\d+/)[0];
                 const totals = { Year: yearNumber };
@@ -116,7 +116,7 @@
                 });
                 return totals;
             });
-            // changing the year range from 2012 to 2024
+    // changing the year range from 2012 to 2024
             const x = d3.scaleBand()
                 .domain(d3.range(2012, 2025)) 
                 .range([0, width])
