@@ -43,7 +43,7 @@ Video narration: https://youtu.be/JmTsjO_iiAE
 - Red: South America
 
   ###Skeches :
-  ![Skeches](./Skech_3.jpg)
+  ![Skech_3](./Skech_3.jpg)
   
   - The color scheme is visually appealing to ensures each region is clearly distinguishable. The consistent use of these colors across both the stacked bar chart and the legend aids in keeping the chart intuitive.
   - The legend is well-placed and provides clear information about which color corresponds to each region.
