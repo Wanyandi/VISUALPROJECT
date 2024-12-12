@@ -77,7 +77,6 @@
     </div>
     <script>
         const width = 600, height = 300, margin = {top: 15, right: 150, bottom: 40, left: 30};
-
         const svg = d3.select("#chart")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -103,22 +102,18 @@
                 });
                 return totals;
             });
-
             // changing the year range from 2012 to 2024
             const x = d3.scaleBand()
                 .domain(d3.range(2012, 2025)) 
                 .range([0, width])
                 .padding(0.2);
-
             const y = d3.scaleLinear()
                 .domain([0, d3.max(processedData, d => d3.sum(regions, region => d[region]))])
                 .nice()
                 .range([height, 0]);
-
             const color = d3.scaleOrdinal()
                 .domain(regions)
                 .range(d3.schemeCategory10);
-
             // make changes on x-axes
             svg.append("g")
                 .attr("transform", `translate(0,${height})`)
@@ -131,24 +126,21 @@
                 .style("text-anchor", "middle")
                 .text("Year");
                  
-    
+    // make changes on y-axes
+        svg.append("g")
+            .call(d3.axisLeft(y))
+            .append("text")
+            .attr("x", -height / 2)
+            .attr("y", -50)
+            .attr("fill", "black")
+            .style("font-size", "14px")
+            .style("text-anchor", "middle")
+            .style("transform", "rotate(-90deg)")
+            .text("Area Burnt (ha)");
 
-            // make changes on y-axes
-            svg.append("g")
-                .call(d3.axisLeft(y))
-                .append("text")
-                .attr("x", -height / 2)
-                .attr("y", -50)
-                .attr("fill", "black")
-                .style("font-size", "14px")
-                .style("text-anchor", "middle")
-                .style("transform", "rotate(-90deg)")
-                .text("Area Burnt (ha)");
-
-
-            // Create stacked bar chart
-            const stackedData = d3.stack()
-                .keys(regions)(processedData);
+// Create stacked bar chart
+        const stackedData = d3.stack()
+            .keys(regions)(processedData);
 
             svg.selectAll(".layer")
                 .data(stackedData)
@@ -168,7 +160,7 @@
                     tooltip.style("opacity", 1);
                     d3.selectAll(".bar").style("opacity", 0.5);
                     d3.select(this).style("opacity", 1);
-                })
+    })
                 .on("mousemove", function(event, d) {
                     const region = d3.select(this.parentNode).datum().key;
                     const value = d[1] - d[0];
@@ -187,8 +179,7 @@
                     tooltip.style("opacity", 0);
                     d3.selectAll(".bar").style("opacity", 1);
                 });
-
-            // Add a line chart to show the cumulative total area burnt by year
+// Add a line chart to show the cumulative total area burnt by year
             const cumulativeData = processedData.map((d, index) => {
                 let cumulativeTotal = 0;
                 regions.forEach(region => {
@@ -197,7 +188,7 @@
                 return { Year: d.Year, CumulativeTotal: cumulativeTotal };
             });
 
-            // Function to update line chart based on the slider year
+// Function to update line chart based on the slider year
             const updateLineChart = (year) => {
                 const filteredCumulativeData = cumulativeData.filter(d => d.Year <= year);
 
@@ -215,17 +206,18 @@
                 .attr("class", "line")
                 .attr("d", line);
             };
-            //This will allow user to adjust the slider by the year
+ //This will allow user to adjust the slider by the year
             updateLineChart(2024);
             const yearSlider = document.getElementById("yearSlider");
             const sliderValue = document.getElementById("sliderValue");
-            //Once the visualization is loaded, you can move teh slide back and forth to show teh Licne chart
+            
+//Once the visualization is loaded, you can move teh slide back and forth to show teh Licne chart
             yearSlider.addEventListener("input", function() {
                 const selectedYear = +yearSlider.value;
                 sliderValue.textContent = selectedYear;
                 updateLineChart(selectedYear);
             });
-          //Adding a legend to show differnt countires
+//Adding a legend to show differnt countires
           const legend = svg.append("g")
                 .attr("transform", `translate(${width + 20}, 20)`);
         legend.selectAll("rect")
