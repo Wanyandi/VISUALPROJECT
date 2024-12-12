@@ -61,7 +61,7 @@
     <div class="slider-container">
         <label for="yearSlider">Select Year: </label>
         <input type="range" id="yearSlider" min="2012" max="2024" step="1" value="2012">
-        <span id="sliderValue">2012</span>
+        <span id="sliderValue">2024</span>
     </div>
 
  
@@ -205,13 +205,10 @@
 // Function to update line chart based on the slider year
             const updateLineChart = (year) => {
                 const filteredCumulativeData = cumulativeData.filter(d => d.Year <= year);
-
                 const line = d3.line()
                     .x(d => x(d.Year) + x.bandwidth() / 2)  // Center the line over the bars
                     .y(d => y(d.CumulativeTotal));
-
                 svg.selectAll(".line").remove();
-
             svg.append("path")
                 .datum(filteredCumulativeData)
                 .attr("fill", "none")
