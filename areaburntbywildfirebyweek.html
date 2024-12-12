@@ -120,7 +120,7 @@
                 .range(d3.schemeCategory10);
 
             // make changes on x-axes
-            svg.append("x-axes")
+            svg.append("g")
                 .attr("transform", `translate(0,${height})`)
                 .call(d3.axisBottom(x).tickFormat(d => d))
                 .append("text")
@@ -134,7 +134,7 @@
     
 
             // make changes on y-axes
-            svg.append("y-axes")
+            svg.append("g")
                 .call(d3.axisLeft(y))
                 .append("text")
                 .attr("x", -height / 2)
