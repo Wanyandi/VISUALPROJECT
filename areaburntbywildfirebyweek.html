@@ -90,12 +90,12 @@
     
     </div>
     <script>
-        const width = 800, height = 500, margin = {top: 50, right: 200, bottom: 90, left: 80};
+        const width = 700, height = 400, margin = {top: 50, right: 180, bottom: 70, left: 60};
         const svg = d3.select("#chart")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
-            .append("g")
+            .append("axes")
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
         const tooltip = d3.select("#tooltip");
@@ -129,23 +129,23 @@
                 .domain(regions)
                 .range(d3.schemeCategory10);
     // xaxes details
-            svg.append("g")
+            svg.append("axes")
                 .attr("transform", `translate(0,${height})`)
                 .call(d3.axisBottom(x).tickFormat(d => d))
                 .append("text")
                 .attr("x", width / 2)
-                .attr("y", 100)
+                .attr("y", 200)
                 .attr("fill", "black")
                 .style("font-size", "14px")
                 .style("text-anchor", "middle")
                 .text("Year");
                  
     // yaxis stuff
-        svg.append("g")
+        svg.append("axes")
             .call(d3.axisLeft(y))
             .append("text")
             .attr("x", -height / 2)
-            .attr("y", -100)
+            .attr("y", -200)
             .attr("fill", "black")
             .style("font-size", "14px")
             .style("text-anchor", "middle")
