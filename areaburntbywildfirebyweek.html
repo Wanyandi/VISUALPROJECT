@@ -120,13 +120,31 @@
                 .range(d3.schemeCategory10);
 
             // make changes on x-axes
-            svg.append("g")
+            svg.append("x-axes")
                 .attr("transform", `translate(0,${height})`)
-                .call(d3.axisBottom(x).tickFormat(d => d));  // Year on x-axis
+                .call(d3.axisBottom(x).tickFormat(d => d))
+                .append("text")
+                .attr("x", width / 2)
+                .attr("y", 50)
+                .attr("fill", "black")
+                .style("font-size", "14px")
+                .style("text-anchor", "middle")
+                .text("Year");
+                 
+    
 
-            // make changes on x-axes
-            svg.append("g")
-                .call(d3.axisLeft(y));
+            // make changes on y-axes
+            svg.append("y-axes")
+                .call(d3.axisLeft(y))
+                .append("text")
+                .attr("x", -height / 2)
+                .attr("y", -50)
+                .attr("fill", "black")
+                .style("font-size", "14px")
+                .style("text-anchor", "middle")
+                .style("transform", "rotate(-90deg)")
+                .text("Area Burnt (ha)");
+
 
             // Create stacked bar chart
             const stackedData = d3.stack()
