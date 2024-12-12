@@ -113,6 +113,15 @@ The data points to various factors that could influence wildfire activity, such 
 ### Conclusion
 The visualization focuses on clarity and user experience. It allows users to easily explore the wildfire data across continents and years while providing detailed contextual information through tooltips and a slider. The main strengths of the design are its interactivity, clarity, and effective data presentation. With a few improvements, it could further enhance the user experience.
 
-## Reference
-Oliveira, Willian. *Wildfires Dataset*. Kaggle, 2024, [https://www.kaggle.com/datasets/willianoliveiragibin/wildfires](https://www.kaggle.com/datasets/willianoliveiragibin/wildfires).
+### Reference
+Oliveira, Willian. *Wildfires Dataset*. Kaggle, 2024 (https://www.kaggle.com/datasets/willianoliveiragibin/wildfires).
+
+### Additional code references:
+    [Visualization-Platform Embed](https://github.com/nonyo555/Visualization-Platform/tree/1c405cf03d2de80a6b010982eb6398be4a86cf42/charts%2Ftest%2Fembeded.js),
+    [AppEx Dispatch Events](https://github.com/omdasoft/appex/tree/de3a1a1ef79b2b2816310f93eeecfba68c7cdbc3/public%2Fadmin%2Fjs%2Fscripts%2Fcharts%2Fd3%2Fpie%2Fdispatch-events.min.js),
+    [D3 Tips and Tricks Bar Chart](https://github.com/vvscode/js--d3-tips-and-tricks/tree/614eb39b0b5e537305b6143334ea88cac091ad31/bar-chart%2Fscript.js),
+    [FCC Scatterplot](https://github.com/martalist/fcc/tree/ae03b68530bd4bb8f1c32baeafbf0a4e3b805093/d3-scatterplot%2Fsource%2Fjs%2Fmain.js),
+    [Slippi Stats Evolution](https://github.com/Damien2417/test-slippi-stats/tree/1b9ff97da7abc22ecceda9e7d20a8aeb26d8a9a7/web%2Fapp%2Fssw%2Fstatic%2Fjs%2Fevolution.js),
+    [Gun Violence Area Chart](https://github.com/liwenwong1/gunviolence/tree/ea1c04ffb08afa273a9573f5c33a92a138c8ecfc/js%2Farea2.js),
+    [CS5891 UFO Visualizations](https://github.com/YunchaoLiu/YunchaoLiu.github.io/tree/48676b9e615cf2bee23518de762833d871f879a2/projects%2FCS5891%2Fufo-report%2FVis-Project-fall-2018%2Fwebpage%2Fufo_visualizations.js).
 
