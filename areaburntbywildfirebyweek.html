@@ -59,9 +59,9 @@
         <div class="tooltip" id="tooltip"></div>
     </div>
     <div class="slider-container">
-        <label for="yearSlider">Select Year: </label>
+        <label for="yearSlider">Move the Slider to Select Year: </label>
         <input type="range" id="yearSlider" min="2012" max="2024" step="1" value="2012">
-        <span id="sliderValue">2024</span>
+        <span id="sliderValue">2012</span>
     </div>
 
  
@@ -118,7 +118,7 @@
             });
     // changing the year range from 2012 to 2024
             const x = d3.scaleBand()
-                .domain(d3.range(2012, 2025)) 
+                .domain(d3.range(2012, 2024)) 
                 .range([0, width])
                 .padding(0.2);
             const y = d3.scaleLinear()
@@ -136,7 +136,7 @@
                 .attr("x", width / 2)
                 .attr("y", 80)
                 .attr("fill", "black")
-                .style("font-size", "14px")
+                .style("font-size", "8px")
                 .style("text-anchor", "middle")
                 .text("Year");
                  
@@ -147,7 +147,7 @@
             .attr("x", -height / 2)
             .attr("y", -100)
             .attr("fill", "black")
-            .style("font-size", "14px")
+            .style("font-size", "8px")
             .style("text-anchor", "middle")
             .style("transform", "rotate(-90deg)")
             .text("Area Burnt (ha)");
@@ -218,7 +218,7 @@
                 .attr("d", line);
             };
  //This will allow user to adjust the slider by the year
-            updateLineChart(2024);
+            updateLineChart(2012);
             const yearSlider = document.getElementById("yearSlider");
             const sliderValue = document.getElementById("sliderValue");
             
